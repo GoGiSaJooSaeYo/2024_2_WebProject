@@ -26,55 +26,12 @@ header {
   margin-right: 10px;
 }
 
-.search-bar input[type="date"] {
-  padding: 10px;
-  margin-right: 10px;
-}
-
 .search-bar button {
   padding: 10px 20px;
 }
 
 .filter {
   margin-left: 10px;
-}
-
-.exhibition-list {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
-  margin-bottom: 20px;
-}
-
-.exhibition {
-  width: 200px;
-  height: 200px;
-  background: #ececec;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 10px;
-  font-size: 16px;
-  font-weight: bold;
-  overflow: hidden;
-}
-
-.pagination {
-  margin: 20px 0;
-}
-
-.pagination button {
-  margin: 0 5px;
-  padding: 10px 15px;
-  cursor: pointer;
-  background-color: #f0f0f0;
-  border: none;
-  border-radius: 5px;
-}
-
-.pagination button:hover {
-  background-color: #d0d0d0;
 }
 
 footer {
