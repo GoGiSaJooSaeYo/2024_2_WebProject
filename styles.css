@@ -3,6 +3,7 @@ body {
   margin: 0;
   padding: 20px;
   background-color: #f9f9f9;
+  /* 전체 배경 */
   text-align: center;
 }
 
@@ -35,15 +36,18 @@ body {
   cursor: pointer;
 }
 
+/* 헤더 스타일 */
 header {
   margin-bottom: 20px;
 }
 
+/* 검색바 스타일 */
 .search-bar {
   display: flex;
   justify-content: center;
   margin-bottom: 20px;
   gap: 10px;
+  /* 버튼과 입력 필드 사이 간격 */
 }
 
 .search-bar input[type="text"] {
@@ -95,6 +99,7 @@ header {
   color: white;
 }
 
+/* 페이지네이션 스타일 */
 .pagination {
   margin: 20px 0;
 }
@@ -112,17 +117,22 @@ header {
   background-color: #d0d0d0;
 }
 
+/* 연극 상세 정보 스타일 */
 .details-container {
   display: flex;
   flex-direction: row;
+  /* 기본적으로 가로 배치 */
   flex-wrap: wrap;
+  /* 화면 크기에 따라 줄바꿈 */
   margin: 50px auto;
   background: #ffffff;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   max-width: 1400px;
+  /* 최대 너비 */
   width: 90%;
+  /* 화면에 맞춰 너비 조정 */
 }
 
 .details-header {
@@ -130,6 +140,7 @@ header {
   flex: 1;
   flex-direction: row;
   gap: 20px;
+  /* 간격 조정 */
   align-items: flex-start;
 }
 
@@ -142,6 +153,7 @@ header {
   padding: 20px;
 }
 
+/* 미디어 쿼리: 화면 크기가 작아지면 세로 배치 */
 @media (max-width: 768px) {
   .details-container {
     flex-direction: column;
