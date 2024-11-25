@@ -7,6 +7,7 @@
   <title>연극 모아보기</title>
   <link rel="stylesheet" href="./styles.css">
   <link rel="icon" href="data:,">
+  <script src="./script.js" defer></script>
 </head>
 
 <body>
@@ -16,24 +17,12 @@
     </header>
     <div class="search-bar">
       <input type="text" id="searchInput" placeholder="검색어를 입력하세요">
-      <button>검색</button>
-      <button>필터</button>
-      <!--       검색, 필터 추가 예정   -->
+      <button onclick="searchPlays()">검색</button>
+      <button class="filter">필터</button>
     </div>
     <div id="playList" class="play-list">
-      <div class="play"></div>
-      <div class="play"></div>
-      <div class="play"></div>
-      <div class="play"></div>
-      <div class="play"></div>
-      <div class="play"></div>
-      <div class="play"></div>
-      <div class="play"></div>
-      <div class="play"></div>
-      <div class="play"></div>
     </div>
     <div class="pagination">
-      <!--       페이지 이동 기능 추가 예정    -->
     </div>
     <footer>
       <p>로고</p>
