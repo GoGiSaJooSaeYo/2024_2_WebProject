@@ -10,7 +10,12 @@ async function fetchPlayDetails(seq) {
   }
 }
 
-async function fetchPlays(fromDate = '20240101', toDate = '20241231', page = 1, keyword = '') {
+
+let plays;
+const playList = document.getElementById('playList');
+let playDiv = document.createElement('div');
+
+async function fetchPlays(fromDate = '20240101', toDate = '20241231', page = 1) {
   try {
     const apiUrl = `http://localhost:3000/api/plays?from=${fromDate}&to=${toDate}&page=${page}&rows=${playPerPage}`;
     const response = await fetch(apiUrl);
@@ -21,15 +26,14 @@ async function fetchPlays(fromDate = '20240101', toDate = '20241231', page = 1, 
     totalPages = data.totalPages || 1;
     currentPage = data.currentPage;
 
-    const playList = document.getElementById('playList');
-    if (!playList) return;
 
+    plays = data.perforList;
     playList.innerHTML = '';
 
-    const plays = data.perforList || [];
     if (plays.length > 0) {
       plays.forEach((play) => {
-        const playDiv = document.createElement('div');
+        playDiv = document.createElement('div');
+
         playDiv.className = 'play';
         playDiv.innerHTML = `
           <div class="play-thumbnail">
@@ -40,13 +44,12 @@ async function fetchPlays(fromDate = '20240101', toDate = '20241231', page = 1, 
           <p class="play-place">${play.place || 'No place'}</p>
         `;
 
-        playDiv.addEventListener('click', () => fetchPlayDetails(play.seq));
+        playDiv.addEventListener('click', () => fetchPlayDetails(play.seq));  
         playList.appendChild(playDiv);
       });
     } else {
       playList.innerHTML = '<p>No plays found.</p>';
     }
-
     updatePaginationUI();
   } catch (error) {
     console.error('Error fetching play data:', error);
@@ -57,13 +60,53 @@ function searchPlays() {
   const fromDateElement = document.getElementById('fromDate');
   const toDateElement = document.getElementById('toDate');
   const searchInputElement = document.getElementById('searchInput');
+  const areaElement = document.getElementById('area');
 
+  const area = areaElement ? areaElement.value : ''; 
   const fromDate = fromDateElement ? fromDateElement.value.replace(/-/g, '') : '20240101';
   const toDate = toDateElement ? toDateElement.value.replace(/-/g, '') : '20241231';
   const keyword = searchInputElement ? searchInputElement.value : '';
 
-  currentPage = 1;
-  fetchPlays(fromDate, toDate, currentPage, keyword);
+  filterPlays(area, fromDate, toDate, keyword, plays)
+  currentPage = 1;  
+}
+
+function filterPlays(area, fromDate, toDate, keyword, plays) {
+  let matchesKeyword;
+  let matchesArea;
+
+
+  plays.forEach((play) => {
+    matchesKeyword = keyword ? play.title && play.title.includes(keyword) : true; 
+    matchesArea = area ? play.area && play.area.includes(area) : true; 
+    if (matchesKeyword && matchesArea) {
+      playDiv = document.createElement('div');
+      playDiv.innerHTML = `
+        <div class="play-thumbnail">
+          <img src="${play.thumbnail || './images/default-image.jpg'}" alt="${play.title || 'No title'}" class="play-image" />
+        </div>
+        <h3 class="play-title">${play.title || 'No title'}</h3>
+        <p class="play-date">${play.startDate || 'No start date'} ~ ${play.endDate || 'No end date'}</p>
+        <p class="play-place">${play.place || 'No place'}</p>
+      `;
+
+      playDiv.addEventListener('click', () => fetchPlayDetails(play.seq)); 
+      playList.appendChild(playDiv);
+    } else {
+      playList.innerHTML = '<p>No plays found.</p>';
+    }
+  }
+  )
+}
+
+
+function toggleFilterOptions() {
+  const filterOptions = document.getElementById('filterOptions');
+  if (filterOptions.style.display === 'none' || filterOptions.style.display === '') {
+    filterOptions.style.display = 'block'; 
+  } else {
+    filterOptions.style.display = 'none'; 
+  }
 }
 
 function goToPage(pageNumber) {
