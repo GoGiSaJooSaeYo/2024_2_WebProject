@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>연극 모아보기</title>
-  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./styles.css">
   <link rel="icon" href="data:,">
   <script src="./script.js" defer></script>
 </head>
@@ -16,10 +16,19 @@
       <h1>연극 모아보기</h1>
     </header>
     <div class="search-bar">
-      <input type="text" id="searchInput" placeholder="검색어를 입력하세요">
-      <button onclick="searchPlays()">검색</button>
-      <button class="filter">필터</button>
+      <input type="text" id="searchInput" placeholder="검색어를 입력하세요"">
+      <button onclick=" searchPlays()">검색</button>
+      <button class="filter" onclick="toggleFilterOptions()">필터</button>
     </div>
+
+    <div id="filterOptions" class="filter-options" style="display: none;">
+      <label for="areaFilter">지역:</label>
+      <input type="text" id="area" placeholder="서울" />
+      <label for="dateFilter">날짜 범위:</label>
+      <input type="date" id="fromDate" />
+      <input type="date" id="toDate" />
+    </div>
+
     <div id="playList" class="play-list">
     </div>
     <div class="pagination">
