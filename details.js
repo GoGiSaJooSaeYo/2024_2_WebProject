@@ -5,8 +5,41 @@ function decodeHtmlEntities(str) {
   return textarea.value;
 }
 
+function fetchMap(data) {
+  const gpsX = parseFloat(data.gpsX).toFixed(6);
+  const gpsY = parseFloat(data.gpsY).toFixed(6);
+
+  var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+    mapOption = {
+      center: new kakao.maps.LatLng(gpsY, gpsX), // 지도의 중심좌표
+      level: 3 // 지도의 확대 레벨
+    };
+
+  var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+
+  // 마커를 표시할 위치입니다 
+  var position = new kakao.maps.LatLng(gpsY, gpsX);
+
+  // 마커를 생성합니다
+  var marker = new kakao.maps.Marker({
+    position: position,
+    clickable: true // 마커를 클릭했을 때 지도의 클릭 이벤트가 발생하지 않도록 설정합니다
+  });
+
+  // 마커를 지도에 표시합니다.
+  marker.setMap(map);
+
+  // 마커에 클릭이벤트를 등록합니다
+  kakao.maps.event.addListener(marker, 'click', function () {
+    window.open(`https://map.kakao.com/link/map/${gpsY},${gpsX}`, '_blank');
+  });
+
+}
+
 // 연극 상세 정보를 가져오는 함수
 async function fetchPlayDetails(seq) {
+  const kakaoMapKey = 'f66afe2b94ea56df5261de1bec424e9d';
+
   try {
     const apiUrl = `http://localhost:3000/api/plays/details/${seq}`;
     console.log('API 호출 URL:', apiUrl);
@@ -36,6 +69,16 @@ async function fetchPlayDetails(seq) {
     if (data.url) document.getElementById('ticketLink').setAttribute('href', data.url);
     else document.getElementById('ticketLink').onclick = () => alert('에매 정보 없음');
 
+
+
+    //카카오 맵-------------------------------------------------------
+
+    const mapDiv = document.getElementById('map');
+    if (data.gpsX) fetchMap(data);
+    else mapDiv.innerHTML = '<h3>지도 정보 없음</h3>';
+
+    //-------------------------------------------------------
+
   } catch (error) {
     console.error('상세 정보를 가져오는 중 오류 발생:', error);
 
@@ -44,6 +87,9 @@ async function fetchPlayDetails(seq) {
       detailsContainer.innerHTML = `<p>상세 정보를 가져오는 중 오류가 발생했습니다. (${error.message})</p>`;
     }
   }
+
+
+
 }
 
 // 페이지 로드 시 seq 쿼리 파라미터를 사용하여 연극 상세 정보를 가져옴
