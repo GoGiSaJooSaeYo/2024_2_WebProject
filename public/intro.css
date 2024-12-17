@@ -1,0 +1,819 @@
+/* 페이드인 섹션 - 화면에 자연스럽게 나타나는 카드들 */
+.fade-in-section {
+  padding: 50px;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  background-color: #f4f4f4;
+}
+
+/* 페이드인 카드 - 스크롤 시 부드럽게 나타나는 효과를 가진 카드 */
+.fade-in-card {
+  width: 200px;
+  /* 카드의 너비 */
+  height: 300px;
+  /* 카드의 높이 */
+  background-color: white;
+  /* 카드 배경 색상 */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  /* 부드러운 그림자 효과 */
+  opacity: 0;
+  /* 초기 투명도 (애니메이션 전에는 안 보이도록 설정) */
+  transform: translateY(50px);
+  /* 애니메이션 시작 위치 (아래로 약간 이동한 상태) */
+}
+
+/* 컬러 전환 섹션 - 화면의 배경색이 전환되는 영역 */
+.color-change-section {
+  height: 100vh;
+  /* 화면 전체 높이 차지 */
+  display: flex;
+  /* 플렉스 레이아웃 */
+  justify-content: center;
+  /* 가로 중앙 정렬 */
+  align-items: center;
+  /* 세로 중앙 정렬 */
+  text-align: center;
+  /* 텍스트 중앙 정렬 */
+  background-color: #ffffff;
+  /* 초기 배경색 흰색 */
+}
+
+/* 절대 위치 지정 - 요소를 부모 기준으로 절대 위치 설정 */
+.absolute {
+  position: absolute;
+}
+
+/* 인라인 블록 요소 - 텍스트와 함께 정렬되는 블록 요소 */
+.inline-block {
+  display: inline-block;
+}
+
+/* 플렉스 레이아웃으로 정렬된 요소 */
+.you {
+  display: flex;
+  /* 플렉스 박스로 레이아웃 */
+  margin: 0.25em 0;
+  /* 요소 위아래 여백 설정 */
+}
+
+/* 작은 너비 요소 - 미세한 여백을 위한 설정 */
+.w-2 {
+  width: 0.5em;
+}
+
+/* 대시 애니메이션 - 선형 배열이 변화하며 움직이는 효과 */
+.dash {
+  animation: dashArray 2s ease-in-out infinite,
+    /* 대시 배열 변화 애니메이션 */
+    dashOffset 2s linear infinite;
+  /* 대시 오프셋 애니메이션 */
+}
+
+/* 회전 애니메이션 - 대시 배열과 회전 효과가 결합된 효과 */
+.spin {
+  animation: spinDashArray 2s ease-in-out infinite,
+    /* 대시 배열 회전 효과 */
+    spin 8s ease-in-out infinite,
+    /* 전체 회전 애니메이션 */
+    dashOffset 2s linear infinite;
+  /* 대시 오프셋 애니메이션 */
+  transform-origin: center;
+  /* 회전 기준점 설정 */
+}
+
+/* 대시 배열 애니메이션 정의 */
+@keyframes dashArray {
+  0% {
+    stroke-dasharray: 0 1 359 0;
+    /* 시작 상태 */
+  }
+
+  50% {
+    stroke-dasharray: 0 359 1 0;
+    /* 중간 상태 */
+  }
+
+  100% {
+    stroke-dasharray: 359 1 0 0;
+    /* 종료 상태 */
+  }
+}
+
+/* 회전 대시 배열 애니메이션 정의 */
+@keyframes spinDashArray {
+  0% {
+    stroke-dasharray: 270 90;
+    /* 시작 대시 배열 */
+  }
+
+  50% {
+    stroke-dasharray: 0 360;
+    /* 중간 대시 배열 */
+  }
+
+  100% {
+    stroke-dasharray: 270 90;
+    /* 종료 대시 배열 */
+  }
+}
+
+/* 대시 오프셋 애니메이션 정의 */
+@keyframes dashOffset {
+  0% {
+    stroke-dashoffset: 365;
+    /* 초기 오프셋 */
+  }
+
+  100% {
+    stroke-dashoffset: 5;
+    /* 최종 오프셋 */
+  }
+}
+
+/* 회전 애니메이션 정의 - 단계별 회전 각도 변경 */
+@keyframes spin {
+  0% {
+    rotate: 0deg;
+    /* 초기 상태 */
+  }
+
+  12.5%,
+  25% {
+    rotate: 270deg;
+    /* 1단계 */
+  }
+
+  37.5%,
+  50% {
+    rotate: 540deg;
+    /* 2단계 */
+  }
+
+  62.5%,
+  75% {
+    rotate: 810deg;
+    /* 3단계 */
+  }
+
+  87.5%,
+  100% {
+    rotate: 1080deg;
+    /* 4단계 */
+  }
+}
+
+/* 카드 레이아웃 - 여러 카드가 나열된 레이아웃 */
+.cards {
+  margin-top: 60px;
+  /* 섹션 위쪽 여백 */
+  display: flex;
+  /* 플렉스 레이아웃 */
+  flex-direction: column;
+  /* 카드들을 세로로 나열 */
+  gap: 15px;
+  /* 카드 간 간격 */
+}
+
+/* 빨간색 카드 - 강조를 위한 배경색 */
+.cards .red {
+  background-color: #f43f5e;
+}
+
+/* 파란색 카드 - 강조를 위한 배경색 */
+.cards .blue {
+  background-color: #3b82f6;
+}
+
+/* 초록색 카드 - 강조를 위한 배경색 */
+.cards .green {
+  background-color: #22c55e;
+}
+
+/* 카드 공통 스타일 - 모든 카드에 적용되는 기본 스타일 */
+.cards .card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  height: 100px;
+  width: 250px;
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+  transition: 400ms;
+}
+
+/* 강조 텍스트 스타일 - 카드 내 중요한 텍스트 */
+.cards .card p.tip {
+  font-size: 1em;
+  font-weight: 700;
+}
+
+/* 보조 텍스트 스타일 - 카드 내 보조 설명 텍스트 */
+.cards .card p.second-text {
+  font-size: 0.7em;
+}
+
+/* 카드 호버 효과 - 마우스 호버 시 확대 효과 */
+.cards .card:hover {
+  transform: scale(1.1, 1.1);
+}
+
+/* 전체 카드 호버 효과 - 호버되지 않은 카드 흐림 효과 */
+.cards:hover>.card:not(:hover) {
+  filter: blur(10px);
+  transform: scale(0.9, 0.9);
+}
+
+/* 전체 스타일 기본 설정 */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard-dynamic-subset.css');
+
+/* 문서와 뷰포트의 높이와 여백 제거 */
+body,
+html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* 리스트와 텍스트 요소의 기본 여백 제거 */
+ul,
+li,
+dl,
+dt,
+dd,
+p,
+span {
+  margin: 0;
+  padding: 0;
+}
+
+/* 링크 스타일 기본 설정 */
+a {
+  text-decoration: none;
+}
+
+/* 리스트 스타일 제거 */
+li {
+  list-style: none;
+}
+
+/* 박스 크기 계산 방식을 모든 요소에 적용 */
+*,
+:after,
+:before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* 전역 변수 설정 - 주요 색상, 폰트, 애니메이션 easing 설정 */
+:root {
+  --primary: #0e819e;
+  --k-font: 'Pretendard';
+  --e-font: 'Poppins';
+  --easing: cubic-bezier(.16, 1, .64, 1);
+}
+
+/* 아이콘 스타일 - 크기와 채우기 설정 */
+.material-symbols-outlined {
+  font-size: 19px !important;
+  font-variation-settings: 'FILL' 1;
+}
+
+/* 주요 섹션 스타일 - 전체 배치와 여백 설정 */
+#inc01 {
+  display: flex;
+  flex-flow: column;
+  gap: 100px;
+  padding: 175px 100px;
+  font-family: var(--e-font), var(--k-font);
+}
+
+/* 주요 섹션의 개별 항목 */
+#inc01 .item {
+  display: flex;
+}
+
+/* 텍스트와 버튼이 포함된 컨텐츠 스타일 */
+#inc01 .item .cont {
+  display: flex;
+  flex-flow: column;
+  width: 50%;
+  padding: 75px 10%;
+  text-align: left;
+}
+
+/* 제목 스타일 - 크기와 간격 설정 */
+#inc01 .item .cont .tit {
+  display: flex;
+  align-items: center;
+  margin-bottom: 35px;
+  font-size: 42px;
+  font-weight: 900;
+  line-height: 1;
+  color: #111;
+}
+
+/* 서브제목 스타일 - 제목과 간격 및 크기 설정 */
+#inc01 .item .cont .tit span {
+  margin-left: 15px;
+  font-size: 30px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* 일반 텍스트 스타일 - 단어 줄바꿈 방지와 줄 간격 설정 */
+#inc01 .item .cont div {
+  word-break: keep-all;
+  line-height: 1.8;
+}
+
+/* 버튼 스타일 - 위치와 크기, 호버 효과 */
+#inc01 .item .cont a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 180px;
+  height: 60px;
+  margin-top: auto;
+  border: 1px solid #e1e1e1;
+  font-size: 16px;
+  font-weight: 600;
+  color: #111;
+  line-height: 58px;
+  transition: all .4s;
+}
+
+
+/* 버튼 스타일 - 가상 요소로 효과를 추가하여 호버 시 애니메이션 적용 */
+#inc01 .item .cont a:before {
+  display: block;
+  content: "";
+  position: absolute;
+  left: 0;
+  z-index: -1;
+  width: 0;
+  height: 100%;
+  background: var(--primary);
+  transition: all .6s var(--easing);
+}
+
+/* 버튼 호버 효과 - 배경 색상 확장 */
+#inc01 .item .cont a:hover {
+  border-color: transparent;
+  color: #fff;
+}
+
+#inc01 .item .cont a:hover:before {
+  width: 100%;
+}
+
+/* 버튼 내 텍스트 스타일 */
+#inc01 .item .cont a span {
+  margin: 0 0 2px 15px;
+}
+
+/* 이미지 박스 스타일 - 이미지와 배경을 포함한 컨테이너 */
+#inc01 .item .img_box {
+  overflow: hidden;
+  position: relative;
+  width: 600px;
+  height: auto;
+  border-radius: 1.625rem;
+}
+
+/* 이미지 박스 가상 요소 - 애니메이션 배경 효과 */
+#inc01 .item .img_box:before {
+  display: block;
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 100%;
+  background: var(--primary);
+  transition: all 1.2s var(--easing);
+}
+
+/* 이미지 스타일 - 초기 설정 및 애니메이션 적용 */
+#inc01 .item .img_box .img {
+  opacity: 0;
+  overflow: hidden;
+  position: relative;
+  width: 0;
+  transition: all 1.8s var(--easing) .3s;
+}
+
+/* 이미지 내부 실제 이미지 스타일 */
+#inc01 .item .img_box .img img {
+  width: 1400px;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* 활성화된 이미지 박스 - 가상 요소와 이미지 보이기 */
+#inc01 .item .img_box.on:before {
+  width: 100%;
+}
+
+#inc01 .item .img_box.on .img {
+  opacity: 1;
+  width: 100%;
+}
+
+/* 반대로 정렬된 이미지 박스 */
+#inc01 .item.reverse .img_box {
+  order: -1;
+}
+
+/* 반응형 스타일 - 최대 너비 1500px */
+@media(max-width:1500px) {
+  #inc01 {
+    padding: 100px 35px;
+  }
+
+  #inc01 .item .cont {
+    padding: 35px;
+  }
+}
+
+/* 반응형 스타일 - 최대 너비 1024px */
+@media(max-width:1024px) {
+  #inc01 {
+    gap: 60px;
+    padding: 60px 0;
+  }
+
+  #inc01 .item {
+    align-items: flex-start;
+  }
+
+  #inc01 .item .cont {
+    padding: 0 30px;
+    font-size: 15px;
+  }
+
+  #inc01 .item .cont .tit {
+    margin-bottom: 15px;
+    font-size: 28px;
+  }
+
+  #inc01 .item .cont .tit span {
+    margin-left: 8px;
+    font-size: 20px;
+  }
+
+  #inc01 .item .img_box .img img {
+    width: 100%;
+  }
+
+  #inc01 .item .cont a {
+    width: 140px;
+    height: 45px;
+    margin-top: 15px;
+    font-size: 14px;
+  }
+}
+
+
+/* 앱 컨테이너 - 화면 중심에 위치한 앱 전체 영역 */
+.app {
+  width: 100%;
+  height: 100vh;
+  max-width: 320px;
+  max-height: 568px;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  overflow: hidden;
+}
+
+/* 네비게이션 바 - 앱 상단에 위치하며 슬라이드 버튼 포함 */
+.nav {
+  width: 100%;
+  height: 70px;
+  padding: 0 15px;
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  -webkit-transition: 300ms;
+  transition: 300ms;
+  z-index: 2;
+}
+
+/* 네비게이션 슬라이드 - 각 버튼 스타일 */
+.nav .swiper-slide {
+  width: 80px;
+  height: 12.5px;
+  opacity: 0.75;
+  border-radius: 30px;
+  background: #fff;
+  position: relative;
+  top: 50%;
+  margin-top: -6.25px;
+}
+
+/* 특정 네비게이션 슬라이드 크기 조정 */
+.nav .swiper-slide:nth-child(1) {
+  width: 100px;
+}
+
+.nav .swiper-slide:nth-child(2) {
+  width: 130px;
+}
+
+.nav .swiper-slide:nth-child(3) {
+  width: 80px;
+}
+
+.nav .swiper-slide:nth-child(4) {
+  width: 110px;
+}
+
+.nav .swiper-slide:nth-child(5) {
+  width: 60px;
+}
+
+/* 활성화된 네비게이션 슬라이드 */
+.nav .swiper-slide.swiper-slide-active {
+  opacity: 1;
+}
+
+/* 활성화된 네비게이션 바 */
+.nav.active {
+  height: 40px;
+  background: #1c3c45;
+}
+
+/* 메인 뷰 - 앱의 주요 화면 영역 */
+.view {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  background: #eb6173;
+}
+
+/* 슬라이드 - 메인 뷰 내부에 위치한 개별 슬라이드 */
+.view .swiper-slide {
+  padding: 70px 15px 0px 15px;
+  -webkit-transition: 300ms;
+  transition: 300ms;
+}
+
+/* 슬라이드 콘텐츠 - 슬라이드 내부의 주요 콘텐츠 */
+.view .swiper-slide .content {
+  width: 100%;
+  height: 100%;
+}
+
+/* 슬라이드 내부 하위 콘텐츠 */
+.view .swiper-slide .content .swiper-slide {
+  height: 80px;
+  padding-top: 0;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, .5);
+}
+
+/* 가상 요소 - 하위 콘텐츠 장식 */
+.view .swiper-slide .content .swiper-slide:after,
+.view .swiper-slide .content .swiper-slide:before,
+.view .swiper-slide .content .swiper-slide div {
+  content: "";
+  height: 12.5px;
+  position: absolute;
+  background: rgba(255, 255, 255, .5);
+  border-radius: 30px;
+}
+
+/* 가상 요소 위치 설정 */
+.view .swiper-slide .content .swiper-slide:before {
+  width: 60px;
+  top: 20px;
+  right: 20px;
+}
+
+.view .swiper-slide .content .swiper-slide:after {
+  width: 110px;
+  bottom: 20px;
+  left: 20px;
+}
+
+/* 콘텐츠 내부 추가 스타일 */
+.view .swiper-slide .content .swiper-slide div {
+  width: 150px;
+  /* 슬라이드 내부 콘텐츠 너비 */
+  top: 20px;
+  /* 상단 여백 */
+  left: 20px;
+  /* 좌측 정렬 */
+  background: #fff;
+  /* 흰색 배경 */
+}
+
+/* 마지막 슬라이드 스타일 */
+.view .swiper-slide .content .swiper-slide:last-child {
+  margin-bottom: 0 !important;
+  /* 마지막 슬라이드 하단 여백 제거 */
+}
+
+/* 활성화된 뷰의 슬라이드 스타일 */
+.view.active .swiper-slide {
+  padding-top: 55px;
+  /* 활성화된 슬라이드의 상단 여백 감소 */
+}
+
+/* 하단 네비게이션 바 스타일 */
+.bottom {
+  width: 100%;
+  /* 전체 너비 */
+  height: 50px;
+  /* 고정 높이 */
+  position: absolute;
+  /* 절대 위치 */
+  bottom: 0px;
+  /* 하단 정렬 */
+  left: 50%;
+  /* 가로 중앙 정렬 */
+  -webkit-transform: translateX(-50%);
+  /* 웹킷 호환성 */
+  transform: translateX(-50%);
+  /* 가로 중앙 맞춤 */
+  -webkit-transition: 300ms;
+  /* 웹킷 호환 전환 효과 */
+  transition: 300ms;
+  /* 전환 효과 */
+  z-index: 3;
+  /* 다른 요소 위로 배치 */
+  text-align: center;
+  /* 텍스트 중앙 정렬 */
+  font-size: 0;
+  /* 텍스트 초기화 */
+  padding: 0 15px;
+  /* 좌우 여백 */
+  background: #1c3c45;
+  /* 배경색 */
+}
+
+/* 하단 버튼 스타일 */
+.bottom a {
+  width: 20%;
+  /* 버튼 너비 */
+  height: 100%;
+  /* 버튼 높이 */
+  display: inline-block;
+  /* 인라인 블록 */
+  position: relative;
+  /* 상대 위치 */
+}
+
+/* 하단 버튼의 가상 요소 */
+.bottom a:before,
+.bottom a:after {
+  content: "";
+  /* 빈 내용 */
+  position: absolute;
+  /* 절대 위치 */
+  top: 50%;
+  /* 세로 중앙 정렬 */
+  left: 50%;
+  /* 가로 중앙 정렬 */
+  -webkit-transform: translate(-50%, -50%);
+  /* 웹킷 호환성 */
+  transform: translate(-50%, -50%);
+  /* 중앙 맞춤 */
+  border-radius: 50%;
+  /* 둥근 모서리 */
+}
+
+/* 버튼의 기본 배경 */
+.bottom a:before {
+  width: 20px;
+  /* 너비 */
+  height: 20px;
+  /* 높이 */
+  background: #eb6173;
+  /* 배경 색상 */
+}
+
+.bottom a:after {
+  width: 10px;
+  /* 너비 */
+  height: 10px;
+  /* 높이 */
+  background: #1c3c45;
+  /* 배경 색상 */
+}
+
+/* 특정 버튼에만 추가적인 스타일 */
+.bottom a:nth-child(5):before {
+  width: 25px;
+  /* 너비 */
+  height: 4px;
+  /* 높이 */
+  border-radius: 0;
+  /* 둥근 모서리 제거 */
+  background: rgba(255, 191, 200, 0.5);
+  /* 반투명 배경 */
+  box-shadow: 0 8px 0px 0px rgba(255, 191, 200, 0.5), 0 -8px 0px 0px rgba(255, 191, 200, 0.5);
+  /* 그림자 효과 */
+}
+
+.bottom a:nth-child(5):after {
+  display: none;
+  /* 가상 요소 숨기기 */
+}
+
+/* 활성화된 하단 네비게이션 바 */
+.bottom.active {
+  bottom: -50px;
+  /* 하단 위치 변경 */
+}
+
+/* Fun Background - 애니메이션 배경 스타일 */
+.funBackground {
+  position: relative;
+  /* 상대 위치 */
+  width: 1000px;
+  /* 너비 */
+  height: 600px;
+  /* 높이 */
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+  /* 그라데이션 배경 */
+  overflow: hidden;
+  /* 넘치는 내용 숨기기 */
+  border-radius: 1.625rem;
+  /* 둥근 모서리 */
+}
+
+/* Fun Object - 애니메이션 요소 스타일 */
+.funObject {
+  position: absolute;
+  /* 절대 위치 */
+  width: 50px;
+  /* 너비 */
+  height: 50px;
+  /* 높이 */
+  background: radial-gradient(circle, #ff4500, #ffa500);
+  /* 원형 그라데이션 */
+  border-radius: 50%;
+  /* 둥근 모서리 */
+  box-shadow: 0 0 15px rgba(255, 69, 0, 0.8), 0 0 30px rgba(255, 69, 0, 0.5);
+  /* 그림자 효과 */
+  transition: transform 0.5s ease, background 0.5s ease, width 0.5s ease, height 0.5s ease;
+  /* 전환 효과 */
+}
+
+/* Fun Object Trail 효과 */
+.funObject::before {
+  content: '';
+  /* 빈 내용 */
+  position: absolute;
+  /* 절대 위치 */
+  top: 0;
+  /* 상단 정렬 */
+  left: 0;
+  /* 좌측 정렬 */
+  width: 100%;
+  /* 너비 */
+  height: 100%;
+  /* 높이 */
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0));
+  /* 흐려지는 배경 효과 */
+  border-radius: 50%;
+  /* 둥근 모서리 */
+  filter: blur(10px);
+  /* 흐림 효과 */
+  animation: pulse 1.5s infinite alternate;
+  /* 맥동 애니메이션 */
+}
+
+/* Pulse 애니메이션 */
+@keyframes pulse {
+
+  0%,
+  100% {
+    transform: scale(1);
+    /* 기본 크기 */
+    opacity: 1;
+    /* 불투명 */
+  }
+
+  50% {
+    transform: scale(1.5);
+    /* 확대 */
+    opacity: 0.5;
+    /* 반투명 */
+  }
+}
