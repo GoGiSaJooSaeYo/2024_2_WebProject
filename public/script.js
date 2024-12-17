@@ -1,3 +1,4 @@
+//페이지에 header.html과 footer.html 파일을 비동기로 로드하여 각각 header와 footer 요소에 삽입
 async function loadComponent(selector, filePath) {
   const element = document.querySelector(selector);
   if (!element) return; // 요소가 없으면 함수 종료
@@ -15,7 +16,6 @@ async function loadComponent(selector, filePath) {
   }
 }
 
-//페이지에 header.html과 footer.html 파일을 비동기로 로드하여 각각 header와 footer 요소에 삽입
 document.addEventListener('DOMContentLoaded', () => {
   loadComponent('header', './header.html');
   loadComponent('footer', './footer.html');
