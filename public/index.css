@@ -10,102 +10,72 @@
   justify-content: center;
   margin-bottom: 20px;
   gap: 10px;
-  /* 입력 필드와 버튼 사이의 간격 */
 }
 
 /* 검색 바의 텍스트 입력 필드 스타일 */
 .search-bar input[type="text"] {
   width: 300px;
-  /* 입력 필드의 고정 너비 */
   padding: 10px 15px;
-  /* 내부 여백 */
   border: 1px solid #ccc;
-  /* 입력 필드 테두리 색상 */
   border-radius: 25px;
-  /* 둥근 모서리 */
   font-size: 16px;
-  /* 텍스트 크기 */
   outline: none;
-  /* 포커스 시 외곽선 제거 */
   transition: border-color 0.3s, box-shadow 0.3s;
-  /* 포커스 전환 효과 */
 }
 
 /* 텍스트 입력 필드에 포커스 시 스타일 */
 .search-bar input[type="text"]:focus {
   border-color: #000;
-  /* 포커스 시 테두리 색 변경 */
   box-shadow: 0 0 5px rgba(22, 22, 22, 0.5);
-  /* 포커스 시 그림자 효과 */
 }
 
 /* 검색 버튼 및 필터 버튼의 공통 스타일 */
 .search-bar button,
 .filter {
   padding: 10px 18px;
-  /* 내부 여백 */
   font-size: 16px;
-  /* 텍스트 크기 */
   font-weight: bold;
-  /* 텍스트 굵기 */
   border-radius: 25px;
-  /* 둥근 모서리 */
   cursor: pointer;
-  /* 마우스 커서 스타일 변경 */
   border: none;
-  /* 버튼 테두리 제거 */
   transition: transform 0.2s, box-shadow 0.3s;
-  /* 호버 및 클릭 효과 */
 }
 
 /* 검색 버튼의 배경 스타일 */
 .search-bar button {
   background: linear-gradient(145deg, #1c1c1c, #000);
-  /* 그라데이션 */
   color: white;
-  /* 텍스트 색상 */
 }
 
 /* 검색 버튼 및 필터 버튼 호버 시 효과 */
 .search-bar button:hover,
 .filter:hover {
   transform: translateY(-2px);
-  /* 약간 위로 이동 */
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-  /* 그림자 효과 */
 }
 
 /* 버튼 클릭 시 효과 */
 .search-bar button:active,
 .filter:active {
   transform: translateY(0);
-  /* 원래 위치로 돌아감 */
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  /* 그림자 감소 */
 }
 
 /* 필터 버튼의 배경 스타일 */
 .filter {
   padding: 10px 20px;
-  /* 내부 여백 */
   background: linear-gradient(45deg, #ff8a00, #e52e71);
-  /* 색상 그라데이션 */
   color: white;
-  /* 텍스트 색상 */
 }
 
 /* 재생 목록의 스크롤 애니메이션 스타일 */
 .play-list {
   display: flex;
   gap: 20px;
-  /* 항목 간 간격 */
   margin-bottom: 20px;
   will-change: transform;
-  /* 애니메이션 최적화 */
   flex-wrap: nowrap;
-  /* 한 줄로 표시 */
   animation: scrolling 300s linear infinite;
-  /* 무한 스크롤 애니메이션 */
 }
 
 /* 재생 목록 스크롤 애니메이션 */
@@ -128,32 +98,22 @@
 .carousel {
   display: flex;
   flex-wrap: nowrap;
-  /* 한 줄로 정렬 */
   margin: 0 auto;
   padding: 20px 0;
-  /* 상하 여백 */
   max-width: 1200px;
-  /* 최대 너비 */
   overflow: hidden;
-  /* 넘치는 내용 숨김 */
   position: relative;
   border-radius: 10px;
-  /* 둥근 모서리 */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  /* 그림자 효과 */
   gap: 20px;
-  /* 항목 간 간격 */
   scroll-behavior: smooth;
-  /* 스크롤 애니메이션 */
 }
 
 /* 캐러셀 내 재생 목록 스타일 */
 .carousel>.play-list {
   flex-shrink: 0;
-  /* 크기 축소 금지 */
   display: flex;
   gap: 20px;
-  /* 항목 간 간격 */
 }
 
 /* 캐러셀 호버 시 애니메이션 일시 정지 */
@@ -165,22 +125,17 @@
 .play {
   width: 400px;
   height: 550px;
-  /* 고정 높이 */
   background: #ececec;
-  /* 배경 색상 */
   display: flex;
   flex-direction: column;
-  /* 세로 정렬 */
   align-items: center;
   justify-content: space-between;
   border-radius: 10px;
   font-size: 16px;
   font-weight: bold;
   overflow: hidden;
-  /* 넘치는 내용 숨김 */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   padding: 10px;
-  /* 내부 여백 */
   cursor: pointer;
 }
 
@@ -188,39 +143,28 @@
 .play img {
   width: 100%;
   height: 500px;
-  /* 고정 높이 */
   object-fit: cover;
-  /* 이미지 비율 유지 */
   border-radius: 10px;
-  /* 둥근 모서리 */
 }
 
 /* 재생 항목 제목 스타일 */
 .play-title {
   margin: 5px 0 0;
-  /* 위쪽 여백 */
   font-size: 14px;
-  /* 텍스트 크기 */
   color: #333;
-  /* 텍스트 색상 */
 }
 
 /* 배경 오버레이 스타일 */
 #background-overlay {
   position: fixed;
-  /* 화면 고정 */
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   z-index: -1;
-  /* 다른 요소 뒤로 이동 */
   opacity: 0;
-  /* 초기 투명도 */
   transition: opacity 1s ease;
-  /* 페이드 효과 */
   pointer-events: none;
-  /* 사용자 상호작용 방지 */
 }
 
 /* 오버레이 이미지 스타일 */
@@ -228,7 +172,6 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  /* 화면에 꽉 채움 */
 }
 
 /* 로딩 화면 스타일 */
@@ -240,15 +183,11 @@
   width: 100%;
   height: 100%;
   background: rgba(128, 123, 123, 0.397);
-  /* 반투명 배경 */
   z-index: 1000;
-  /* 최상위 레이어 */
   flex-direction: column;
-  /* 세로 정렬 */
   justify-content: center;
   align-items: center;
   gap: 20px;
-  /* 간격 */
 }
 
 /* 로딩 이미지 스타일 */
@@ -257,9 +196,7 @@
   width: 220px;
   height: 220px;
   border-radius: 50%;
-  /* 원형 */
   object-fit: cover;
-  /* 이미지 비율 유지 */
 }
 
 /* 로딩 텍스트 애니메이션 */
@@ -269,19 +206,14 @@
   font-family: system-ui, sans-serif;
   font-weight: bold;
   color: #0000;
-  /* 초기 투명도 */
   -webkit-text-stroke: 1px #000;
-  /* 외곽선 효과 */
   background: conic-gradient(#000 0 0) 0/0% 100% no-repeat text;
-  /* 배경 효과 */
   animation: l1 1s linear infinite;
-  /* 무한 반복 애니메이션 */
 }
 
 /* 로더 텍스트 내용 */
 .loader:before {
   content: "연극 보러 가는 중";
-  /* 텍스트 내용 */
 }
 
 /* 로더 애니메이션 */
@@ -294,45 +226,29 @@
 /* 광고 영역 스타일 */
 .ad {
   margin-left: 60px;
-  /* 좌측 여백 */
   margin-right: 60px;
-  /* 우측 여백 */
   position: relative;
-  /* 내부 요소를 기준으로 위치 설정 */
   width: 180px;
-  /* 광고 영역의 너비 */
   height: 500px;
-  /* 광고 영역의 높이 */
   background: rgb(82, 81, 81);
-  /* 배경 색상 */
   display: flex;
-  /* 내부 요소 정렬을 위한 Flexbox 사용 */
   align-items: center;
-  /* 세로 중앙 정렬 */
   justify-content: center;
-  /* 가로 중앙 정렬 */
   border-radius: 15px;
-  /* 둥근 모서리 */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.247);
-  /* 그림자 효과 */
 }
 
 /* 광고 멘트 스타일 */
 .ad-ment {
   animation-delay: 1;
-  /* 애니메이션 지연 시간 */
   color: rgb(255, 255, 255);
-  /* 텍스트 색상 */
   font-size: 25px;
-  /* 텍스트 크기 */
   font-weight: bold;
-  /* 텍스트 굵기 */
 }
 
 /* 슬라이드 인 애니메이션 클래스 */
 .slide-in {
   -webkit-animation: slide-in 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-  /* 부드러운 애니메이션 */
   animation: slide-in 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
 
@@ -340,24 +256,18 @@
 @-webkit-keyframes slide-in {
   0% {
     -webkit-transform: translateY(-600px) rotateX(-30deg) scale(0);
-    /* 초기 상태 */
     transform: translateY(-600px) rotateX(-30deg) scale(0);
     -webkit-transform-origin: 50% 100%;
-    /* 회전 중심 */
     transform-origin: 50% 100%;
     opacity: 0;
-    /* 완전히 투명 */
   }
 
   100% {
     -webkit-transform: translateY(0) rotateX(0) scale(1);
-    /* 최종 상태 */
     transform: translateY(0) rotateX(0) scale(1);
     -webkit-transform-origin: 50% 1400px;
-    /* 회전 중심 */
     transform-origin: 50% 1400px;
     opacity: 1;
-    /* 불투명 */
   }
 }
 
@@ -387,24 +297,18 @@
 @-webkit-keyframes slide-out {
   0% {
     -webkit-transform: translateY(0) rotateX(0) scale(1);
-    /* 초기 상태 */
     transform: translateY(0) rotateX(0) scale(1);
     -webkit-transform-origin: 50% -1400px;
-    /* 회전 중심 */
     transform-origin: 50% -1400px;
     opacity: 1;
-    /* 불투명 */
   }
 
   100% {
     -webkit-transform: translateY(600px) rotateX(30deg) scale(0);
-    /* 종료 상태 */
     transform: translateY(600px) rotateX(30deg) scale(0);
     -webkit-transform-origin: 50% 100%;
-    /* 회전 중심 */
     transform-origin: 50% 100%;
     opacity: 1;
-    /* 불투명 유지 */
   }
 }
 
@@ -426,53 +330,44 @@
 /* 젤로 애니메이션 클래스 */
 .jello {
   -webkit-animation: jello 0.9s both;
-  /* 애니메이션 지속시간 */
   animation: jello 0.9s both;
   animation-iteration-count: 2;
-  /* 반복 횟수 */
 }
 
 /* 젤로 애니메이션 */
 @-webkit-keyframes jello {
   0% {
     -webkit-transform: scale3d(1, 1, 1);
-    /* 초기 상태 */
     transform: scale3d(1, 1, 1);
   }
 
   30% {
     -webkit-transform: scale3d(1.25, 0.75, 1);
-    /* 늘어남 */
     transform: scale3d(1.25, 0.75, 1);
   }
 
   40% {
     -webkit-transform: scale3d(0.75, 1.25, 1);
-    /* 압축 */
     transform: scale3d(0.75, 1.25, 1);
   }
 
   50% {
     -webkit-transform: scale3d(1.15, 0.85, 1);
-    /* 작아짐 */
     transform: scale3d(1.15, 0.85, 1);
   }
 
   65% {
     -webkit-transform: scale3d(0.95, 1.05, 1);
-    /* 약간 커짐 */
     transform: scale3d(0.95, 1.05, 1);
   }
 
   75% {
     -webkit-transform: scale3d(1.05, 0.95, 1);
-    /* 줄어듦 */
     transform: scale3d(1.05, 0.95, 1);
   }
 
   100% {
     -webkit-transform: scale3d(1, 1, 1);
-    /* 초기 상태로 복원 */
     transform: scale3d(1, 1, 1);
   }
 }
