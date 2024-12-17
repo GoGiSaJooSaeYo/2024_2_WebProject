@@ -1,3 +1,4 @@
+//페이지에 header.html과 footer.html 파일을 비동기로 로드하여 각각 header와 footer 요소에 삽입
 async function loadComponent(selector, filePath) {
   const element = document.querySelector(selector);
   if (!element) return;
