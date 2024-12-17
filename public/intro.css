@@ -10,33 +10,21 @@
 /* 페이드인 카드 - 스크롤 시 부드럽게 나타나는 효과를 가진 카드 */
 .fade-in-card {
   width: 200px;
-  /* 카드의 너비 */
   height: 300px;
-  /* 카드의 높이 */
   background-color: white;
-  /* 카드 배경 색상 */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  /* 부드러운 그림자 효과 */
   opacity: 0;
-  /* 초기 투명도 (애니메이션 전에는 안 보이도록 설정) */
   transform: translateY(50px);
-  /* 애니메이션 시작 위치 (아래로 약간 이동한 상태) */
 }
 
 /* 컬러 전환 섹션 - 화면의 배경색이 전환되는 영역 */
 .color-change-section {
   height: 100vh;
-  /* 화면 전체 높이 차지 */
   display: flex;
-  /* 플렉스 레이아웃 */
   justify-content: center;
-  /* 가로 중앙 정렬 */
   align-items: center;
-  /* 세로 중앙 정렬 */
   text-align: center;
-  /* 텍스트 중앙 정렬 */
   background-color: #ffffff;
-  /* 초기 배경색 흰색 */
 }
 
 /* 절대 위치 지정 - 요소를 부모 기준으로 절대 위치 설정 */
@@ -52,9 +40,7 @@
 /* 플렉스 레이아웃으로 정렬된 요소 */
 .you {
   display: flex;
-  /* 플렉스 박스로 레이아웃 */
   margin: 0.25em 0;
-  /* 요소 위아래 여백 설정 */
 }
 
 /* 작은 너비 요소 - 미세한 여백을 위한 설정 */
@@ -65,38 +51,29 @@
 /* 대시 애니메이션 - 선형 배열이 변화하며 움직이는 효과 */
 .dash {
   animation: dashArray 2s ease-in-out infinite,
-    /* 대시 배열 변화 애니메이션 */
     dashOffset 2s linear infinite;
-  /* 대시 오프셋 애니메이션 */
 }
 
 /* 회전 애니메이션 - 대시 배열과 회전 효과가 결합된 효과 */
 .spin {
   animation: spinDashArray 2s ease-in-out infinite,
-    /* 대시 배열 회전 효과 */
     spin 8s ease-in-out infinite,
-    /* 전체 회전 애니메이션 */
     dashOffset 2s linear infinite;
-  /* 대시 오프셋 애니메이션 */
   transform-origin: center;
-  /* 회전 기준점 설정 */
 }
 
 /* 대시 배열 애니메이션 정의 */
 @keyframes dashArray {
   0% {
     stroke-dasharray: 0 1 359 0;
-    /* 시작 상태 */
   }
 
   50% {
     stroke-dasharray: 0 359 1 0;
-    /* 중간 상태 */
   }
 
   100% {
     stroke-dasharray: 359 1 0 0;
-    /* 종료 상태 */
   }
 }
 
@@ -104,17 +81,14 @@
 @keyframes spinDashArray {
   0% {
     stroke-dasharray: 270 90;
-    /* 시작 대시 배열 */
   }
 
   50% {
     stroke-dasharray: 0 360;
-    /* 중간 대시 배열 */
   }
 
   100% {
     stroke-dasharray: 270 90;
-    /* 종료 대시 배열 */
   }
 }
 
@@ -122,12 +96,10 @@
 @keyframes dashOffset {
   0% {
     stroke-dashoffset: 365;
-    /* 초기 오프셋 */
   }
 
   100% {
     stroke-dashoffset: 5;
-    /* 최종 오프셋 */
   }
 }
 
@@ -135,13 +107,11 @@
 @keyframes spin {
   0% {
     rotate: 0deg;
-    /* 초기 상태 */
   }
 
   12.5%,
   25% {
     rotate: 270deg;
-    /* 1단계 */
   }
 
   37.5%,
@@ -153,26 +123,20 @@
   62.5%,
   75% {
     rotate: 810deg;
-    /* 3단계 */
   }
 
   87.5%,
   100% {
     rotate: 1080deg;
-    /* 4단계 */
   }
 }
 
 /* 카드 레이아웃 - 여러 카드가 나열된 레이아웃 */
 .cards {
   margin-top: 60px;
-  /* 섹션 위쪽 여백 */
   display: flex;
-  /* 플렉스 레이아웃 */
   flex-direction: column;
-  /* 카드들을 세로로 나열 */
   gap: 15px;
-  /* 카드 간 간격 */
 }
 
 /* 빨간색 카드 - 강조를 위한 배경색 */
@@ -613,190 +577,123 @@ li {
 /* 콘텐츠 내부 추가 스타일 */
 .view .swiper-slide .content .swiper-slide div {
   width: 150px;
-  /* 슬라이드 내부 콘텐츠 너비 */
   top: 20px;
-  /* 상단 여백 */
   left: 20px;
-  /* 좌측 정렬 */
   background: #fff;
-  /* 흰색 배경 */
 }
 
 /* 마지막 슬라이드 스타일 */
 .view .swiper-slide .content .swiper-slide:last-child {
   margin-bottom: 0 !important;
-  /* 마지막 슬라이드 하단 여백 제거 */
 }
 
 /* 활성화된 뷰의 슬라이드 스타일 */
 .view.active .swiper-slide {
   padding-top: 55px;
-  /* 활성화된 슬라이드의 상단 여백 감소 */
 }
 
 /* 하단 네비게이션 바 스타일 */
 .bottom {
   width: 100%;
-  /* 전체 너비 */
   height: 50px;
-  /* 고정 높이 */
   position: absolute;
-  /* 절대 위치 */
   bottom: 0px;
-  /* 하단 정렬 */
   left: 50%;
-  /* 가로 중앙 정렬 */
   -webkit-transform: translateX(-50%);
-  /* 웹킷 호환성 */
   transform: translateX(-50%);
-  /* 가로 중앙 맞춤 */
   -webkit-transition: 300ms;
-  /* 웹킷 호환 전환 효과 */
   transition: 300ms;
-  /* 전환 효과 */
   z-index: 3;
-  /* 다른 요소 위로 배치 */
   text-align: center;
-  /* 텍스트 중앙 정렬 */
   font-size: 0;
-  /* 텍스트 초기화 */
   padding: 0 15px;
-  /* 좌우 여백 */
   background: #1c3c45;
-  /* 배경색 */
 }
 
 /* 하단 버튼 스타일 */
 .bottom a {
   width: 20%;
-  /* 버튼 너비 */
-  height: 100%;
-  /* 버튼 높이 */
+ height: 100%;
   display: inline-block;
-  /* 인라인 블록 */
   position: relative;
-  /* 상대 위치 */
 }
 
 /* 하단 버튼의 가상 요소 */
 .bottom a:before,
 .bottom a:after {
   content: "";
-  /* 빈 내용 */
   position: absolute;
-  /* 절대 위치 */
   top: 50%;
-  /* 세로 중앙 정렬 */
   left: 50%;
-  /* 가로 중앙 정렬 */
   -webkit-transform: translate(-50%, -50%);
-  /* 웹킷 호환성 */
   transform: translate(-50%, -50%);
-  /* 중앙 맞춤 */
   border-radius: 50%;
-  /* 둥근 모서리 */
 }
 
 /* 버튼의 기본 배경 */
 .bottom a:before {
   width: 20px;
-  /* 너비 */
   height: 20px;
-  /* 높이 */
   background: #eb6173;
-  /* 배경 색상 */
 }
 
 .bottom a:after {
   width: 10px;
-  /* 너비 */
   height: 10px;
-  /* 높이 */
   background: #1c3c45;
-  /* 배경 색상 */
 }
 
 /* 특정 버튼에만 추가적인 스타일 */
 .bottom a:nth-child(5):before {
   width: 25px;
-  /* 너비 */
   height: 4px;
-  /* 높이 */
   border-radius: 0;
-  /* 둥근 모서리 제거 */
   background: rgba(255, 191, 200, 0.5);
-  /* 반투명 배경 */
   box-shadow: 0 8px 0px 0px rgba(255, 191, 200, 0.5), 0 -8px 0px 0px rgba(255, 191, 200, 0.5);
-  /* 그림자 효과 */
 }
 
 .bottom a:nth-child(5):after {
   display: none;
-  /* 가상 요소 숨기기 */
 }
 
 /* 활성화된 하단 네비게이션 바 */
 .bottom.active {
   bottom: -50px;
-  /* 하단 위치 변경 */
 }
 
 /* Fun Background - 애니메이션 배경 스타일 */
 .funBackground {
   position: relative;
-  /* 상대 위치 */
   width: 1000px;
-  /* 너비 */
   height: 600px;
-  /* 높이 */
   background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-  /* 그라데이션 배경 */
   overflow: hidden;
-  /* 넘치는 내용 숨기기 */
   border-radius: 1.625rem;
-  /* 둥근 모서리 */
 }
 
 /* Fun Object - 애니메이션 요소 스타일 */
 .funObject {
   position: absolute;
-  /* 절대 위치 */
   width: 50px;
-  /* 너비 */
   height: 50px;
-  /* 높이 */
   background: radial-gradient(circle, #ff4500, #ffa500);
-  /* 원형 그라데이션 */
   border-radius: 50%;
-  /* 둥근 모서리 */
   box-shadow: 0 0 15px rgba(255, 69, 0, 0.8), 0 0 30px rgba(255, 69, 0, 0.5);
-  /* 그림자 효과 */
   transition: transform 0.5s ease, background 0.5s ease, width 0.5s ease, height 0.5s ease;
-  /* 전환 효과 */
 }
 
 /* Fun Object Trail 효과 */
 .funObject::before {
   content: '';
-  /* 빈 내용 */
   position: absolute;
-  /* 절대 위치 */
   top: 0;
-  /* 상단 정렬 */
   left: 0;
-  /* 좌측 정렬 */
   width: 100%;
-  /* 너비 */
   height: 100%;
-  /* 높이 */
   background: radial-gradient(circle, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0));
-  /* 흐려지는 배경 효과 */
   border-radius: 50%;
-  /* 둥근 모서리 */
   filter: blur(10px);
-  /* 흐림 효과 */
   animation: pulse 1.5s infinite alternate;
-  /* 맥동 애니메이션 */
 }
 
 /* Pulse 애니메이션 */
@@ -805,15 +702,11 @@ li {
   0%,
   100% {
     transform: scale(1);
-    /* 기본 크기 */
     opacity: 1;
-    /* 불투명 */
   }
 
   50% {
     transform: scale(1.5);
-    /* 확대 */
     opacity: 0.5;
-    /* 반투명 */
   }
 }
